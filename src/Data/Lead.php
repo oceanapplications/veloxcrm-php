@@ -3,7 +3,7 @@
 namespace Oceanapplications\Veloxcrmphp\Data;
 
 
-class Lead
+class Lead extends Request
 {
     public  $OfferID;
     public  $FirstName;
@@ -35,5 +35,12 @@ class Lead
     public	$AgreeToTelemarketing;
     public	$AgreeToTerms;
     public	$PageUrl;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->AgreeToTelemarketing = true;
+        $this->AgreeToTerms = true;
+    }
 
 }
