@@ -3,7 +3,7 @@
 namespace Oceanapplications\Veloxcrmphp\Data;
 
 
-class Lead extends Request
+class Prospect extends Request
 {
     public  $OfferID;
     public  $FirstName;
@@ -25,8 +25,6 @@ class Lead extends Request
     public	$BillingCountryID;
     public	$AffiliateID;
     public	$SubAffiliateID;
-    public	$OS;
-    public	$IPAddress;
     public	$Custom1;
     public	$Custom2;
     public	$Custom3;

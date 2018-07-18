@@ -29,27 +29,41 @@ class TestClient extends TestCase
         $this->assertEquals(184, $country);
     }
 
-    public function testImportLead(){
+    public function AddProspect(){
 
-        $lead = new Oceanapplications\Veloxcrmphp\Data\Lead();
-        $lead->OfferID = 235;
-        $lead->FirstName = "FirstN";
-        $lead->LastName = "LastN";
-        $lead->Address1 = "address1";
-        $lead->Address2 = "address2";
-        $lead->City = "city";
-        $lead->StateID = States::GetStateId("New York");
-        $lead->Zip = "ZIP";
-        $lead->CountryID = Countries::GetCountryId("United States");
-        $lead->Phone = "4844844848";
-        $lead->Email = "test@test.com";
+        $prospect = new Oceanapplications\Veloxcrmphp\Data\Prospect();
+        $prospect->OfferID = 235;
+        $prospect->FirstName = "FirstN";
+        $prospect->LastName = "LastN";
+        $prospect->Address1 = "address1";
+        $prospect->Address2 = "address2";
+        $prospect->City = "city";
+        $prospect->StateID = States::GetStateId("New York");
+        $prospect->Zip = "ZIP";
+        $prospect->CountryID = Countries::GetCountryId("United States");
+        $prospect->Phone = "4844844848";
+        $prospect->Email = "test@test.com";
 
         $client = new Client($_ENV['API_USERNAME'], $_ENV['API_PASSWORD']);
 
+        $result = $client->addProspect($prospect);
+        return json_decode($result)->ProspectId;
+    }
 
-        $result = $client->importLead($lead);
+    public function testAddOrder(){
+        $prospectID = $this->AddProspect();
 
-        var_dump($result);
+        $sale = new \Oceanapplications\Veloxcrmphp\Data\NewSale();
+        $sale->ProspectID = $prospectID;
+        $sale->PaymentMethodID = 1;
+        $sale->CardNumber = "4111111111111111";
+        $sale->ExpiryMonth = "1";
+        $sale->ExpiryYear = "2019";
+        $sale->Cvv = "099";
+        $sale->BillingCycleProfileID = "715";
+
+        $client = new Client($_ENV['API_USERNAME'], $_ENV['API_PASSWORD']);
+        $result = $client->newSale($sale);
 
     }
 }

@@ -8,7 +8,7 @@ class Request
 
     public $OS;
     public $Browser;
-    public $IP;
+    public $IPAddress;
 
     public function __construct()
     {
@@ -17,7 +17,7 @@ class Request
             $this->Browser = $this->getBrowser();
             $this->OS = $this->getOS();
         }
-        $this->IP = $this->get_client_ip();
+        $this->IPAddress = $this->get_client_ip();
 
     }
 
