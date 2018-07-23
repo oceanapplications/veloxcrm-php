@@ -22,6 +22,9 @@ class TestClient extends TestCase
     public function testStateList(){
         $state = States::GetStateId("New York");
         $this->assertEquals(32, $state);
+
+        $state = States::GetStateId("NY");
+        $this->assertEquals(32, $state);
     }
 
     public function testCountryList(){
