@@ -9,6 +9,7 @@
     "guzzlehttp/guzzle": "~6.0",
     "phpunit/phpunit": "~6.0",
     "vlucas/phpdotenv": "^2.5",
-    "mcred/detect-credit-card-type": "^0.1.0"
+    "mcred/detect-credit-card-type": "^0.1.0",
+    "netresearch/jsonmapper": "^1.4"
   }
 }

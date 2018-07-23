@@ -98,7 +98,14 @@ class TestClient extends TestCase
 
 
         $client = new Client($_ENV['API_USERNAME'], $_ENV['API_PASSWORD']);
-        $result = $client->fullSale($fullSale);
+        $orderResult = $client->fullSale($fullSale);
 
+        //attach upsell
+        $upsell = new \Oceanapplications\Veloxcrmphp\Data\Upsell();
+        $upsell->OfferID = 238;
+        $upsell->BillingCycleProfileID = 716;
+        $upsell->OrderID = $orderResult->OrderID;
+
+        $upsellResult = $client->upSale($upsell);
     }
 }

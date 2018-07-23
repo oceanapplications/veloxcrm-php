@@ -3,7 +3,12 @@
 namespace Oceanapplications\Veloxcrmphp;
 
 use GuzzleHttp;
+use Oceanapplications\Veloxcrmphp\Data\FullSale;
+use Oceanapplications\Veloxcrmphp\Data\NewSale;
+use Oceanapplications\Veloxcrmphp\Data\Prospect;
 use Oceanapplications\Veloxcrmphp\Data\Request;
+use Oceanapplications\Veloxcrmphp\Data\Upsell;
+use phpDocumentor\Reflection\Types\Object_;
 
 class Client
 {
@@ -56,29 +61,38 @@ class Client
     }
 
     /**
-     * @param Request $data
-     * @return String
+     * @param Prospect $data
+     * @return object
      */
-    public function addProspect(Request $data)
+    public function addProspect(Prospect $data)
     {
-        return $this->sendPost('Prospects/Add', $data);
+        return json_decode($this->sendPost('Prospects/Add', $data));
     }
 
     /**
-     * @param Request $data
-     * @return String
+     * @param NewSale $data
+     * @return object
      */
-    public function newSale(Request $data)
+    public function newSale(NewSale $data)
     {
-        return $this->sendPost('Orders/NewSale', $data);
+        return json_decode($this->sendPost('Orders/NewSale', $data));
     }
 
     /**
-     * @param Request $data
+     * @param FullSale $data
+     * @return object
+     */
+    public function fullSale(FullSale $data)
+    {
+        return json_decode($this->sendPost('Orders/FullSale', $data));
+    }
+
+    /**
+     * @param Upsell $upsell
      * @return String
      */
-    public function fullSale(Request $data)
+    public function upSale(Upsell $upsell)
     {
-        return $this->sendPost('Orders/FullSale', $data);
+        return $this->sendPost('Orders/UpSale', $upsell);
     }
 }
