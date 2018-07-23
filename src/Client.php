@@ -96,10 +96,14 @@ class Client
         return $this->sendPost('Orders/UpSale', $upsell);
     }
 
+    /**
+     * @param int $orderId
+     * @return object
+     */
     public function thankYou(int $orderId)
     {
-        return $this->guzzle->get('Orders/ThankYou', [
+        return json_decode($this->guzzle->get('Orders/ThankYou', [
             'query'=>['orderID'=>$orderId]
-        ]);
+        ])->getBody()->getContents());
     }
 }
