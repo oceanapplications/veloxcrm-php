@@ -108,4 +108,11 @@ class TestClient extends TestCase
 
         $upsellResult = $client->upSale($upsell);
     }
+
+    public function testThankYou(){
+        $client = new Client($_ENV['API_USERNAME'], $_ENV['API_PASSWORD']);
+        $orderResult = $client->thankYou('248353');
+        var_dump($orderResult);
+    }
+
 }

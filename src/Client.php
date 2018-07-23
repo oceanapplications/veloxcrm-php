@@ -95,4 +95,11 @@ class Client
     {
         return $this->sendPost('Orders/UpSale', $upsell);
     }
+
+    public function thankYou(int $orderId)
+    {
+        return $this->guzzle->get('Orders/ThankYou', [
+            'query'=>['orderID'=>$orderId]
+        ]);
+    }
 }
