@@ -64,4 +64,9 @@ class Client
     {
         return $this->sendPost('Orders/NewSale', $data);
     }
+
+    public function fullSale(Request $data)
+    {
+        return $this->sendPost('Orders/FullSale', $data);
+    }
 }
