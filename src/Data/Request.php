@@ -113,4 +113,20 @@ class Request
         }
         return $ipaddress;
     }
+
+    public function getCardType($cardNumber){
+        $detector = new \CardDetect\Detector();
+        $type = $detector->detect($cardNumber);
+
+        switch ($type){
+            case("Visa"):
+                return 1;
+            case("Amex"):
+                return 3;
+            case("MasterCard"):
+                return 2;
+            case("Discover"):
+                return 4;
+        }
+    }
 }

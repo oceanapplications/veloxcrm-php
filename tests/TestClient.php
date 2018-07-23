@@ -32,6 +32,12 @@ class TestClient extends TestCase
         $this->assertEquals(184, $country);
     }
 
+    public function testCardDetector(){
+        $request = new \Oceanapplications\Veloxcrmphp\Data\Request();
+        $result = $request->getCardType('4111111111111111');
+        $this->assertEquals(1, $result);
+    }
+
     public function AddProspect(){
 
         $prospect = new Oceanapplications\Veloxcrmphp\Data\Prospect();
