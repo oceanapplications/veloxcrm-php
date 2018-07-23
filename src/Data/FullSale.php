@@ -48,4 +48,11 @@ class FullSale extends Request
     public	$RebillCAVV;
     public	$RebillXID;
 
+    public function __construct()
+    {
+        parent::__construct();
+        $this->AgreeToTelemarketing = true;
+        $this->AgreeToTerms = true;
+    }
+
 }

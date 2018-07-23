@@ -55,16 +55,28 @@ class Client
         ]);
     }
 
+    /**
+     * @param Request $data
+     * @return String
+     */
     public function addProspect(Request $data)
     {
         return $this->sendPost('Prospects/Add', $data);
     }
 
+    /**
+     * @param Request $data
+     * @return String
+     */
     public function newSale(Request $data)
     {
         return $this->sendPost('Orders/NewSale', $data);
     }
 
+    /**
+     * @param Request $data
+     * @return String
+     */
     public function fullSale(Request $data)
     {
         return $this->sendPost('Orders/FullSale', $data);
