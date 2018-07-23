@@ -75,4 +75,30 @@ class TestClient extends TestCase
         $result = $client->newSale($sale);
 
     }
+
+    public function testFullSale(){
+        $fullSale = new \Oceanapplications\Veloxcrmphp\Data\FullSale();
+        $fullSale->OfferID = 235;
+        $fullSale->FirstName = "FirstN FullSale";
+        $fullSale->LastName = "LastN";
+        $fullSale->Address1 = "address1";
+        $fullSale->Address2 = "address2";
+        $fullSale->City = "city";
+        $fullSale->StateID = States::GetStateId("New York");
+        $fullSale->Zip = "ZIP";
+        $fullSale->CountryID = Countries::GetCountryId("United States");
+        $fullSale->Phone = "4844844848";
+        $fullSale->Email = "test@test.com";
+        $fullSale->PaymentMethodID = 1;
+        $fullSale->CardNumber = "4111111111111111";
+        $fullSale->ExpiryMonth = "1";
+        $fullSale->ExpiryYear = "2019";
+        $fullSale->Cvv = "099";
+        $fullSale->BillingCycleProfileID = "715";
+
+
+        $client = new Client($_ENV['API_USERNAME'], $_ENV['API_PASSWORD']);
+        $result = $client->fullSale($fullSale);
+
+    }
 }
